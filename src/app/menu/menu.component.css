@@ -1,0 +1,88 @@
+body {
+    font-family: 'Droid Sans',Arial,Verdana,sans-serif;
+}
+
+.fixed-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%  !important;
+    height:80px;
+    background: #efefef;
+    border-bottom: 1px solid #333333;
+}
+
+.mat-sidenav {
+    min-width: 15vw;
+    width: 250px;
+    position: relative;
+    padding-top:10px;
+    bottom: 0;
+    margin: 24px 0;
+    background-color: #efefef;
+}
+
+.mat-button {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin: 24px 0;
+}
+
+.mat-sidenav-content{
+    background-color:#efefef;
+}
+
+.app-content {
+    background-color: #efefef;
+    padding: 86px 16px 16px 16px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+
+    max-width: 1080px;
+}
+
+.mat-toolbar {
+    cursor: pointer;
+}
+.mat-icon {
+    cursor: pointer;
+}
+
+.app-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+h1 {
+    font-size: 20px;
+}
+
+
+@media only screen and (min-width: 993px){
+
+    .fixed-header{
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        width: 100%  !important;
+        max-width:1050px;
+        height:80px;
+        background: #efefef;
+        left: 50%;
+        margin-left: -525px;
+        height:80px;
+        border-bottom: 1px solid #333333;
+    }
+
+
+}

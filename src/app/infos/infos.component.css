@@ -1,0 +1,29 @@
+
+.infos {
+    display: none;
+}
+
+.mob_infos {
+    display: block;
+    width: 100%;
+}
+
+.mob_img_infos {
+    width: 85%;
+    max-width: 450px;
+}
+
+@media only screen and (min-width: 993px) {
+    .mob_infos {
+        display: none;
+    }
+
+    .infos {
+        display: block;
+        /*text-align:center;*/
+        padding-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1000px;
+    }
+}

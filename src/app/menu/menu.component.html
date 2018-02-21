@@ -1,0 +1,69 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #start>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:center;">
+            <img src="./assets/images/logo_fadeaway_01.png" style="width:120px;"/>
+            <!--mat-icon>close</mat-icon-->
+        </button>
+        </a>
+        <hr/>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:right;">
+            <strong>INFOS</strong> <mat-icon style="font-size: 22px;">drag_handle</mat-icon>
+        </button>
+        </a>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:right;">
+            DOSSIERS <mat-icon style="font-size: 22px;">drag_handle</mat-icon>
+        </button>
+        </a>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:right;">
+            TEMPS MORTS <mat-icon style="font-size: 22px;">drag_handle</mat-icon>
+        </button>
+        </a>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:right;">
+            TOP CLUTCH <mat-icon style="font-size: 22px;">drag_handle</mat-icon>
+        </button>
+        </a>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:right;">
+            VIDEOS <mat-icon style="font-size: 22px;">drag_handle</mat-icon>
+        </button>
+        </a>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()" style="text-align:right;">
+            CONTACTS <mat-icon style="font-size: 22px;">drag_handle</mat-icon>
+        </button>
+        </a>
+        <hr/>
+        <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1" (click)="start.close()">
+            <mat-icon style="font-size: 22px;">person</mat-icon> <strong>Connexion</strong>
+        </button>
+        </a>
+        <hr/>
+        <a href="http://facebook.com/fadeaway0840" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <button mat-button tabindex="-1">
+            <img src="./assets/images/facebook_bw.png" style="width:22px;" /> <strong>#fadeaway</strong>
+        </button>
+        </a>
+    </mat-sidenav>
+    <div>
+        <mat-toolbar role="header" class="fixed-header" style="height:80px;">
+            <button mat-icon-button (click)="start.open('mouse')">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="app-toolbar" style="text-align:center;">
+                <a routerLink="" style="text-decoration:none; font-color:#000000; color:#000000;">
+                <img src="./assets/images/logo_fadeaway_01.png" class="logotoolbar"/>
+                </a>
+            </div>
+        </mat-toolbar>
+        <div #root="dir" dir="ltr" class="app-content">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</mat-sidenav-container>

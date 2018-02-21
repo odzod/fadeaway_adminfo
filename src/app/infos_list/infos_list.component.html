@@ -1,0 +1,71 @@
+<div class="mob_list_infos" *ngFor="let news of list_of_news; let i = index;">
+    <a routerLink="news/{{news.news_id}}" style="text-decoration:none; font-color:#000000; color:#000000;">
+        <div class="mob_infos_img"><img src="{{news.news_img}}" class="mob_img_infos_list"/></div>
+        <div class="mob_infos_separator"></div>
+        <div class="mob_infos_text">
+            <div style="font-size:10px;padding-top:3px;">
+                {{news.news_type}}
+            </div>
+            <div style="font-size:12px;padding-top:6px;">
+                {{news.news_title}}
+            </div>
+        </div>
+    </a>
+    <hr/>
+</div>
+
+<div class="list_infos">
+    <div style="float:left;width:100%;text-align:center;padding-right:30px;">
+    <cmp-carousel></cmp-carousel>
+    </div>
+    <div style="display:block;">&nbsp;<br/>
+        <div style="background-color: white; min-height:inherit;">
+            <div style="float:left;width:60%;text-align:left;background-color: white;min-height:inherit; ">
+                <div style="padding-top:20px;padding-left:20px;">
+                    <span style="color:#fb8c28;font-weight:bold;"><strong>NOS DERNIERES</strong></span>
+                    <span style="color:#111111;font-weight:bold;"><strong> INFOS & DOSSIERS</strong></span>
+                    <br/>
+                    <img src="./assets/images/news_space.png" style="width:220px;height:3px;margin-bottom:10px;"/>
+                </div>
+                <div *ngFor="let news of list_of_news; let i = index;">
+                    <a routerLink="news/{{news.news_id}}" style="text-decoration:none; font-color:#000000; color:#000000;">
+                        <div style="float:left; width:20px;height:130px;"></div>
+                        <div class="infos_img">
+                            <img src="{{news.news_img}}" class="img_infos_list"/>
+                        </div>
+                        <div class="infos_separator"></div>
+                        <div class="infos_text">
+                            <div style="font-size:12px;padding-top:3px;color:#fb8c28;font-weight: bold;">
+                                {{news.news_type}}
+                            </div>
+                            <div style="font-size:14px;padding-top:5px;">
+                                <strong>{{news.news_title}}</strong>
+                            </div>
+                            <div style="font-size:13px;;padding-top:5px;" [innerHtml]="news.news_title_contains">
+                            </div>
+                        </div>
+                        <!--div style="float:left; width:10px;height:120px;"></div-->
+                    </a>
+                </div>
+            </div>
+            <div style="float:left;width:25px;"> &nbsp; </div>
+            <div style="float:left;width:345px; padding:20px;height:100%;min-height:inherit;text-align:left; background-color:white;">
+                <div>
+                    <span style="color:#fb8c28;font-weight:bold;"><strong>LAST 5</strong></span>
+                    <span style="color:#111111;font-weight:bold;"><strong> CLUTCH</strong></span>
+                        <br/>
+                    <img src="./assets/images/news_space.png" style="width:102px;height:3px;margin-bottom:10px;"/>
+                </div>
+                <br/>&nbsp;<br/>
+                <div>
+                    <span style="color:#fb8c28;font-weight:bold;"><strong>NEXT</strong></span>
+                    <span style="color:#111111;font-weight:bold;"><strong>  DIFFUSIONS</strong></span>
+                    <br/>
+                    <img src="./assets/images/news_space.png" style="width:115px;height:3px;margin-bottom:10px;"/>
+                </div>
+            </div>
+        </div>
+        &nbsp;
+        <br/>&nbsp;<br/>
+    </div>
+</div>

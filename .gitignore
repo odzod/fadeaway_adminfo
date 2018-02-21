@@ -1,0 +1,4 @@
+include/config.include.php
+.idea/
+src/.idea/
+node_modules/
