@@ -28,6 +28,7 @@ export class InfosListComponent implements OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
+    private myEditor;
 
     constructor(private http: HttpClient) {}
 
@@ -36,6 +37,7 @@ export class InfosListComponent implements OnInit {
 
         // If the user changes the sort order, reset back to the first page.
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
 
         merge(this.sort.sortChange, this.paginator.page)
             .pipe(

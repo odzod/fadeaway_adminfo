@@ -52,7 +52,9 @@ import {
 import {AppComponent} from './app.component';
 import {EntryApp, MenuComponent} from './menu/menu.component';
 import {InfosListComponent} from './infos_list/infos_list.component';
+import {InfosEditComponent} from './infos_edit/infos_edit.component';
 import {AppRoutingModule} from './routes';
+import { JoditAngularModule } from 'jodit-angular';
 
 /**
  * NgModule that includes all Material modules that are required to serve the app.
@@ -118,11 +120,13 @@ export class MaterialModule {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        JoditAngularModule
     ],
     declarations: [AppComponent
         , EntryApp, MenuComponent,
         InfosListComponent,
+        InfosEditComponent
     ],
     bootstrap: [AppComponent],
     providers: []

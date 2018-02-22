@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
-import { OnInit } from '@angular/core';
+import {Component, ElementRef, ViewEncapsulation,OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,6 +8,10 @@ import { OnInit } from '@angular/core';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
+
+    constructor(private route: ActivatedRoute,private router: Router) {
+        this.route.params.subscribe(res => console.log(res.id));
+    }
 
     ngOnInit() {
 
