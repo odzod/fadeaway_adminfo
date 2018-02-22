@@ -1,83 +1,71 @@
-
-.list_infos {
-    display: none;
+/* Structure */
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+    position: relative;
 }
 
-.infos_img {
-    /*background-color: #ffff00;*/
-    float: left;
-    height: 130px;
-    width: 180px;
-    margin: 0;
+.example-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 20px;
 }
 
-.infos_separator {
-    width: 30px;
-    float: left;
-    height: 130px;
+.example-table {
+    overflow: auto;
+    min-height: 300px;
+    max-height: 800px;
+    max-width: 1200px;
+    /*max-height: 800px;*/
 }
 
-.infos_text {
-    /*background-color: #00ff00;*/
-
-    height: 130px;
-    margin-left:10px;
-    border-bottom: 2px solid #efefef;
-    margin-right: 30px;
-    padding-bottom:10px;
-    margin-top:10px;
-    text-align:justify;
-    font-weight: normal;
-
+.example-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.img_infos_list {
-    width: 180px;
-    height:120px;
+.example-rate-limit-reached {
+    color: #980000;
+    max-width: 360px;
+    text-align: center;
 }
 
-.mob_list_infos {
-    display: block;
-    width: 100%;
+/* Column Widths */
+.mat-column-news_id {
+    max-width: 50px;
 }
 
-.mob_infos_img {
-    /*background-color: #ffff00;*/
-    float: left;
-    height: 66px;
-    width: 100px;
-    margin: 0;
+.mat-column-news_type {
+    max-width: 100px;
 }
 
-.mob_infos_separator {
-    width: 10px;
-    float: left;
-    height: 66px;
+.mat-column-news_create {
+    max-width: 100px;
+}
+.mat-column-news_update {
+    max-width: 100px;
 }
 
-.mob_infos_text {
-    /*background-color: #00ff00;*/
-    text-align: left;
-    height: 66px;
-    margin: 5px;
+.mat-column-news_difuse {
+    max-width: 60px;
 }
 
-.mob_img_infos_list {
-    width: 100px;
-}
+.mat-column-news_user {
+    max-width: 120px;
 
-@media only screen and (min-width: 993px) {
-    .mob_list_infos {
-        display: none;
-    }
-
-    .list_infos {
-        display: block;
-        /*text-align:center;*/
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 1000px;
-    }
+}.mat-column-news_edit {
+    max-width: 50px;
+    font-size: 10px;
 }

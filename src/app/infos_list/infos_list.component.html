@@ -1,71 +1,69 @@
-<div class="mob_list_infos" *ngFor="let news of list_of_news; let i = index;">
-    <a routerLink="news/{{news.news_id}}" style="text-decoration:none; font-color:#000000; color:#000000;">
-        <div class="mob_infos_img"><img src="{{news.news_img}}" class="mob_img_infos_list"/></div>
-        <div class="mob_infos_separator"></div>
-        <div class="mob_infos_text">
-            <div style="font-size:10px;padding-top:3px;">
-                {{news.news_type}}
-            </div>
-            <div style="font-size:12px;padding-top:6px;">
-                {{news.news_title}}
-            </div>
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+         *ngIf="isLoadingResults || isRateLimitReached">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+            Problème de chargement... Patientez une minutes
         </div>
-    </a>
-    <hr/>
-</div>
+    </div>
 
-<div class="list_infos">
-    <div style="float:left;width:100%;text-align:center;padding-right:30px;">
-    <cmp-carousel></cmp-carousel>
-    </div>
-    <div style="display:block;">&nbsp;<br/>
-        <div style="background-color: white; min-height:inherit;">
-            <div style="float:left;width:60%;text-align:left;background-color: white;min-height:inherit; ">
-                <div style="padding-top:20px;padding-left:20px;">
-                    <span style="color:#fb8c28;font-weight:bold;"><strong>NOS DERNIERES</strong></span>
-                    <span style="color:#111111;font-weight:bold;"><strong> INFOS & DOSSIERS</strong></span>
-                    <br/>
-                    <img src="./assets/images/news_space.png" style="width:220px;height:3px;margin-bottom:10px;"/>
-                </div>
-                <div *ngFor="let news of list_of_news; let i = index;">
-                    <a routerLink="news/{{news.news_id}}" style="text-decoration:none; font-color:#000000; color:#000000;">
-                        <div style="float:left; width:20px;height:130px;"></div>
-                        <div class="infos_img">
-                            <img src="{{news.news_img}}" class="img_infos_list"/>
-                        </div>
-                        <div class="infos_separator"></div>
-                        <div class="infos_text">
-                            <div style="font-size:12px;padding-top:3px;color:#fb8c28;font-weight: bold;">
-                                {{news.news_type}}
-                            </div>
-                            <div style="font-size:14px;padding-top:5px;">
-                                <strong>{{news.news_title}}</strong>
-                            </div>
-                            <div style="font-size:13px;;padding-top:5px;" [innerHtml]="news.news_title_contains">
-                            </div>
-                        </div>
-                        <!--div style="float:left; width:10px;height:120px;"></div-->
-                    </a>
-                </div>
-            </div>
-            <div style="float:left;width:25px;"> &nbsp; </div>
-            <div style="float:left;width:345px; padding:20px;height:100%;min-height:inherit;text-align:left; background-color:white;">
-                <div>
-                    <span style="color:#fb8c28;font-weight:bold;"><strong>LAST 5</strong></span>
-                    <span style="color:#111111;font-weight:bold;"><strong> CLUTCH</strong></span>
-                        <br/>
-                    <img src="./assets/images/news_space.png" style="width:102px;height:3px;margin-bottom:10px;"/>
-                </div>
-                <br/>&nbsp;<br/>
-                <div>
-                    <span style="color:#fb8c28;font-weight:bold;"><strong>NEXT</strong></span>
-                    <span style="color:#111111;font-weight:bold;"><strong>  DIFFUSIONS</strong></span>
-                    <br/>
-                    <img src="./assets/images/news_space.png" style="width:115px;height:3px;margin-bottom:10px;"/>
-                </div>
-            </div>
-        </div>
-        &nbsp;
-        <br/>&nbsp;<br/>
-    </div>
+    <mat-table #table [dataSource]="dataSource" class="example-table"
+               matSort matSortActive="news_id" matSortDisableClear matSortDirection="desc">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Number Column -->
+        <ng-container matColumnDef="news_id">
+            <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+            <mat-cell *matCellDef="let row"><strong>{{ row.news_id }}</strong></mat-cell>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="news_title">
+            <mat-header-cell *matHeaderCellDef>Titre</mat-header-cell>
+            <mat-cell *matCellDef="let row"><strong>{{ row.news_title }}</strong></mat-cell>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="news_type">
+            <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.news_type_str }}</mat-cell>
+        </ng-container>
+
+        <!-- Created Column -->
+        <ng-container matColumnDef="news_create">
+            <mat-header-cell *matHeaderCellDef
+                             mat-sort-header
+                             disableClear="true">
+                Créée le
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"><strong>{{ row.news_create }}</strong></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="news_update">
+            <mat-header-cell *matHeaderCellDef>Modifiée le</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.news_update }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="news_difuse">
+            <mat-header-cell *matHeaderCellDef>Difusée</mat-header-cell>
+            <mat-cell *matCellDef="let row"><img src="./../../assets/images/check_{{ row.news_difuse }}.png" style="height:18px;"/></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="news_user">
+            <mat-header-cell *matHeaderCellDef>Par</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.news_user_nom }} {{ row.news_user_prenom }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="news_edit">
+            <mat-header-cell *matHeaderCellDef>Editer</mat-header-cell>
+            <mat-cell *matCellDef="let row" style="font-size:18px;"><mat-icon style="font-size:18px;">border_color</mat-icon></mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="resultsLength" [pageSize]="30">
+    </mat-paginator>
 </div>
