@@ -8,7 +8,8 @@ import {catchError} from 'rxjs/operators/catchError';
 import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {switchMap} from 'rxjs/operators/switchMap';
-import '../../assets/jodit.js';
+import Jodit from 'jodit';
+
 
 /**
  * @title Table retrieving data through HTTP
@@ -22,12 +23,13 @@ export class InfosEditComponent implements OnInit {
 
 
     private myEditor;
+    private myEditor2;
 
     constructor(private http: HttpClient) {}
 
     ngOnInit() {
 
-        this.myEditor = new Jodit('#editor',{
+        this.myEditor = new Jodit('#editor', {
             "uploader": {
                 url: "http://localhost:8181/index-test.php?action=upload"
             },
@@ -42,6 +44,21 @@ export class InfosEditComponent implements OnInit {
             "height": 500,
             "width": 650
         });
+
+        this.myEditor2 = new Jodit('#editor_title', {
+            "uploader": {
+                url: "http://localhost:8181/index-test.php?action=upload"
+            },
+            "language": "fr",
+            "toolbarSticky": false,
+            "showCharsCounter": false,
+            "showWordsCounter": false,
+            "showXPathInStatusbar": false,
+            "buttonsXS": "bold,|,brush,paragraph,|,align,|,undo,redo,|,eraser,dots",
+            "height": 150,
+            "width": 650
+        });
+
         this.myEditor.setEditorValue(
             `<p style="text-align: justify;">Voici la question et rumeur du jour ! <strong>Isaiah Thomas</strong> serait-il transférable avant la Trade deadline ?</p>
 <p style="text-align: center;"><img src="http://www.fadeaway.fr/assets/images/news_5.jpg" style="width: 400px; height: 267px;" title="Isaiah Thomas"><br></p>

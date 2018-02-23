@@ -27,7 +27,7 @@
     "@ngtools/json-schema" "^1.1.0"
     rxjs "^5.5.6"
 
-"@angular/animations@5.2.1":
+"@angular/animations@5.2.1", "@angular/animations@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/animations/-/animations-5.2.1.tgz#cc325c23db98c13539cbedf9405bc068bd3041cd"
   dependencies:
@@ -103,7 +103,7 @@
   optionalDependencies:
     node-sass "^4.3.0"
 
-"@angular/common@5.2.1":
+"@angular/common@5.2.1", "@angular/common@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/common/-/common-5.2.1.tgz#a6f2d349f6102e6be7cc488899578a0dc327b755"
   dependencies:
@@ -118,25 +118,25 @@
     reflect-metadata "^0.1.2"
     tsickle "^0.26.0"
 
-"@angular/compiler@5.2.1":
+"@angular/compiler@5.2.1", "@angular/compiler@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/compiler/-/compiler-5.2.1.tgz#758ed236c361cff018699e041fabbc4bcb7cdc72"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/core@5.2.1":
+"@angular/core@5.2.1", "@angular/core@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/core/-/core-5.2.1.tgz#47347e4098b0e997220d77652f4d9ca44dda8923"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/forms@5.2.1":
+"@angular/forms@5.2.1", "@angular/forms@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/forms/-/forms-5.2.1.tgz#530f1249bc71d9560297be642d55a5a6c439d920"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/http@5.2.1":
+"@angular/http@5.2.1", "@angular/http@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/http/-/http-5.2.1.tgz#dd847fb8aa0972b1906df5376307354b818ef4be"
   dependencies:
@@ -152,19 +152,19 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-browser-dynamic@5.2.1":
+"@angular/platform-browser-dynamic@5.2.1", "@angular/platform-browser-dynamic@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/platform-browser-dynamic/-/platform-browser-dynamic-5.2.1.tgz#df073c48f5b90e8c5d5b0774aa2bef49f288989c"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-browser@5.2.1":
+"@angular/platform-browser@5.2.1", "@angular/platform-browser@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/platform-browser/-/platform-browser-5.2.1.tgz#0d05a4ba107e7ad8241a862683c83193c26b3c5e"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/router@5.2.1":
+"@angular/router@5.2.1", "@angular/router@^5.2.0":
   version "5.2.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/@angular/router/-/router-5.2.1.tgz#fbb3a2d644e854bca25d075e506d25f3c670f8d2"
   dependencies:
@@ -1169,7 +1169,7 @@ copy-webpack-plugin@^4.1.1:
     pify "^3.0.0"
     serialize-javascript "^1.4.0"
 
-core-js@2.4.1, core-js@^2.2.0, core-js@^2.4.0:
+core-js@2.4.1, core-js@^2.2.0, core-js@^2.4.0, core-js@^2.4.1:
   version "2.4.1"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
@@ -2986,6 +2986,29 @@ jasmine@^2.5.3:
 jasminewd2@^2.1.0:
   version "2.2.0"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/jasminewd2/-/jasminewd2-2.2.0.tgz#e37cf0b17f199cce23bea71b2039395246b4ec4e"
+
+jodit-angular@^1.0.17:
+  version "1.0.17"
+  resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/jodit-angular/-/jodit-angular-1.0.17.tgz#4dd97412d2edf1c62e99a63916d840ed5a9189df"
+  dependencies:
+    "@angular/animations" "^5.2.0"
+    "@angular/common" "^5.2.0"
+    "@angular/compiler" "^5.2.0"
+    "@angular/core" "^5.2.0"
+    "@angular/forms" "^5.2.0"
+    "@angular/http" "^5.2.0"
+    "@angular/platform-browser" "^5.2.0"
+    "@angular/platform-browser-dynamic" "^5.2.0"
+    "@angular/router" "^5.2.0"
+    core-js "^2.4.1"
+    jodit "^3.1.39"
+    rxjs "^5.5.6"
+    tslib "^1.7.1"
+    zone.js "^0.8.19"
+
+jodit@^3.1.39:
+  version "3.1.50"
+  resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/jodit/-/jodit-3.1.50.tgz#9863b49c354efc12286f6f2fda5645b2f378fccc"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.4.3"
@@ -6121,6 +6144,6 @@ zone.js@0.8.12:
   version "0.8.12"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/zone.js/-/zone.js-0.8.12.tgz#86ff5053c98aec291a0bf4bbac501d694a05cfbb"
 
-zone.js@^0.8.14:
+zone.js@^0.8.14, zone.js@^0.8.19:
   version "0.8.20"
   resolved "https://artifactory-iva.si.francetelecom.fr/artifactory/api/npm/npm-virt-orange-project-devops/zone.js/-/zone.js-0.8.20.tgz#a218c48db09464b19ff6fc8f0d4bb5b1046e185d"

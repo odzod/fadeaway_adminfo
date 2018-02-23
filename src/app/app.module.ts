@@ -48,14 +48,13 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MAT_LABEL_GLOBAL_OPTIONS
 } from '@angular/material';
 import {AppComponent} from './app.component';
 import {EntryApp, MenuComponent} from './menu/menu.component';
 import {InfosListComponent} from './infos_list/infos_list.component';
 import {InfosEditComponent} from './infos_edit/infos_edit.component';
 import {AppRoutingModule} from './routes';
-import { JoditAngularModule } from 'jodit-angular';
-
 /**
  * NgModule that includes all Material modules that are required to serve the app.
  */
@@ -120,8 +119,7 @@ export class MaterialModule {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        HttpClientModule,
-        JoditAngularModule
+        HttpClientModule
     ],
     declarations: [AppComponent
         , EntryApp, MenuComponent,
@@ -129,7 +127,9 @@ export class MaterialModule {
         InfosEditComponent
     ],
     bootstrap: [AppComponent],
-    providers: []
+    providers: [
+        {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}
+    ]
 })
 export class AppModule {
 }

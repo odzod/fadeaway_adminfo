@@ -1,3 +1,37 @@
-<div>
-    <textarea id="editor" name="editor"></textarea>
+<div style="background-color:white; width:700px; padding:20px;">
+    <form class="example-form">
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="Date de creation">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        &nbsp; &nbsp;
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="Date dernière modification">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        &nbsp; &nbsp;
+        <mat-checkbox><span style='font-family: Roboto,"Helvetica Neue",sans-serif;
+            font-size: 11px;font-weight: 400;line-height: 1.125;'>Diffusée l'information</span></mat-checkbox>
+        <br/><br/>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Titre" value="">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Contenu titre" id="editor_title" name="editor_title"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Contenu principal" id="editor" name="editor"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Source" value="">
+        </mat-form-field>
+
+    </form>
 </div>
