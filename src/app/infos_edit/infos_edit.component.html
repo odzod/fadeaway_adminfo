@@ -1,5 +1,5 @@
 <div style="background-color:white; width:700px; padding:20px;">
-    <form class="example-form">
+    <form class="example-form" id="formEditNews">
 
         <mat-form-field>
             <input matInput [matDatepicker]="picker1" placeholder="Date de creation">
@@ -21,6 +21,10 @@
             <input matInput placeholder="Titre" value="">
         </mat-form-field>
 
+        <span style='font-family: Roboto,"Helvetica Neue",sans-serif;
+            font-size: 11px;font-weight: 400;line-height: 1.125;'>Image liée <i>(laisser vide si pas de changement)</i></span><input type="file" id="img_news">
+        <br/>
+
         <mat-form-field class="example-full-width">
             <textarea matInput placeholder="Contenu titre" id="editor_title" name="editor_title"></textarea>
         </mat-form-field>
@@ -32,6 +36,9 @@
         <mat-form-field class="example-full-width">
             <input matInput placeholder="Source" value="">
         </mat-form-field>
+
+        <button style="background-color: #b6f1abcc;" mat-raised-button>Enregistrer</button>
+        &nbsp; &nbsp; <button style="background-color: rgba(255,166,156,0.8);" mat-raised-button>Annuler</button>
 
     </form>
 </div>

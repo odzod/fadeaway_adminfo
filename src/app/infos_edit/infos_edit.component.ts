@@ -1,5 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
+import {ConfigService} from '../config';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
 import {merge} from 'rxjs/observable/merge';
@@ -17,6 +20,7 @@ import Jodit from 'jodit';
 @Component({
     selector: 'infos-edit',
     styleUrls: ['infos_edit.component.css'],
+    providers: [ConfigService],
     templateUrl: 'infos_edit.component.html',
 })
 export class InfosEditComponent implements OnInit {
@@ -25,9 +29,23 @@ export class InfosEditComponent implements OnInit {
     private myEditor;
     private myEditor2;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private config: ConfigService) {
+
+    }
 
     ngOnInit() {
+
+        this.route.params.subscribe(res => {
+            this.config.httpGET('news/' + res.id, '').subscribe(res2 => {
+                this.myForm = res2['data'][0];
+                this.myEditor.setEditorValue(
+                    this.myForm['news_contains']
+                );
+                this.myEditor2.setEditorValue(
+                    this.myForm['news_title_contains']
+                );
+            });
+        });
 
         this.myEditor = new Jodit('#editor', {
             "uploader": {
@@ -59,18 +77,9 @@ export class InfosEditComponent implements OnInit {
             "width": 650
         });
 
-        this.myEditor.setEditorValue(
-            `<p style="text-align: justify;">Voici la question et rumeur du jour ! <strong>Isaiah Thomas</strong> serait-il transférable avant la Trade deadline ?</p>
-<p style="text-align: center;"><img src="http://www.fadeaway.fr/assets/images/news_5.jpg" style="width: 400px; height: 267px;" title="Isaiah Thomas"><br></p>
-<p style="text-align: justify;"><br>Malgré la victoire à l'arraché de cette nuit contre Minnesota, les Cavaliers sont toujours dans une situation difficile. Il se murmure que le petit lutin <s>vert</s> de Cleveland pourrait être utilisé comme monnaie d’échange lors de cette dernière
-    journée de Trade.
-    <br>Transférer l’un des meilleurs scoreurs de la saison passée ? Non ? Eh bien oui, la question est réelle. Cette saison le meneur de 29 ans peine à retrouver son niveau et depuis son retour l’équipe va mal.<br><br>Quand on voit que lors des mois
-    de novembre et décembre, les Cavs ont aligné 13 victoires consécutives (et 18 victoires en 19 matchs) avec El Jose Calderon à la baguette, on se dit que "oui" Thomas n’a pas réussi son intégration dans le collectif de Cleveland et qu’un départ serait
-    possible.
-    <br><br>Sachant que son contrat arrive à terme en fin de saison.&nbsp;<strong>La question de son transfert est légitime!</strong><br>Réponse dans les heures à venir !<br>
-</p>`
-        );
 
     }
+
+    public myForm = {};
 }
 
