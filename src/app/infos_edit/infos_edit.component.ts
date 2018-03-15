@@ -16,6 +16,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 // import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
+
 /**
  * @title Table retrieving data through HTTP
  */
@@ -52,14 +53,37 @@ export class InfosEditComponent implements OnInit {
         this.router.navigateByUrl('');
     }
 
+    public formData = new FormData();
+
+    fileChange(event) {
+        let fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            let file: File = fileList[0];
+            this.formData.append('uploadFile', file, file.name);
+        }
+    }
+
+    onSubmit(form: any): void {
+        this.formData.append('news_title', form.news_title);
+        this.formData.append("news_id",this.news_id);
+        this.formData.append("news_difuse",form.publish);
+        this.formData.append("news_title_contains",this.myEditor2.value);
+        this.formData.append("news_contains",this.myEditor.value);
+        this.config.httpPOST("admin/news/update", this.formData).subscribe(res=>{
+            console.log(res);
+        });
+    }
+
     ngOnInit() {
 
         this.route.params.subscribe(res => {
             this.config.httpGET('news/' + res.id, '').subscribe(res2 => {
                 this.myForm = res2['data'][0];
-                console.log(this.myForm['news_create']);
-                this.date_create = new FormControl(this.myForm['news_create']);
-                this.news_title = new FormControl(this.myForm['news_title']);
+                this.date_create = this.myForm['news_create'];
+                this.date_modif = this.myForm['news_update'];
+                this.publish = (this.myForm['news_difuse'] == "1" || this.myForm['news_difuse'] == 1) ? true : false;
+                this.news_id = this.myForm['news_id'];
+                this.news_title = this.myForm['news_title'];
                 this.myEditor.setEditorValue(
                     this.myForm['news_contains']
                 );
@@ -103,8 +127,11 @@ export class InfosEditComponent implements OnInit {
 
     }
 
-    public date_create: FormControl;
-    public news_title: FormControl;
+    public date_create: string;
+    public date_modif;
+    public news_title;
+    public news_id;
+    public publish: boolean;
 
     public myForm = {};
 }

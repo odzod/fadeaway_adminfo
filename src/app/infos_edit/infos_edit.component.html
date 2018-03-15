@@ -1,29 +1,26 @@
 <img src="./assets/images/logo_fadeaway_01.png" style="width:260px;"/>
 <br/>
 <div style="background-color:white; width:700px; padding:20px;">
-    <form class="example-form" id="formEditNews">
+    <form class="example-form" id="formEditNews" #f="ngForm"
+          (ngSubmit)="onSubmit(f.value)"  >
         <mat-form-field>
-            <input matInput [formControl]="date_create" [matDatepicker]="picker1" placeholder="Date de creation">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
+            <input matInput placeholder="Date de création" [(ngModel)]="date_create" name="date_create"  id="date_create" value="">
         </mat-form-field>
         &nbsp; &nbsp;
         <mat-form-field>
-            <input matInput [matDatepicker]="picker2" placeholder="Date dernière modification">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
+            <input matInput placeholder="Date de dernière modification" [(ngModel)]="date_modif" name="date_modif" id="date_modif" value="">
         </mat-form-field>
         &nbsp; &nbsp;
-        <mat-checkbox><span style='font-family: Roboto,"Helvetica Neue",sans-serif;
+        <mat-checkbox id="test" id="publish" name="publish" [(ngModel)]="publish"><span style='font-family: Roboto,"Helvetica Neue",sans-serif;
             font-size: 11px;font-weight: 400;line-height: 1.125;'>Diffusée l'information</span></mat-checkbox>
         <br/><br/>
 
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Titre" [formControl]="news_title" value="">
+            <input matInput placeholder="Titre"  id="news_title" name="news_title" [(ngModel)]="news_title" value="">
         </mat-form-field>
 
         <span style='font-family: Roboto,"Helvetica Neue",sans-serif;
-            font-size: 11px;font-weight: 400;line-height: 1.125;'>Image liée <i>(laisser vide si pas de changement)</i></span><input type="file" id="img_news">
+            font-size: 11px;font-weight: 400;line-height: 1.125;'>Image liée <i>(laisser vide si pas de changement)</i></span><input type="file" id="img_news" (change)="fileChange($event)" >
         <br/>
 
         <mat-form-field class="example-full-width">
@@ -38,7 +35,7 @@
             <input matInput placeholder="Source" value="">
         </mat-form-field>
 
-        <button style="background-color: #b6f1abcc;" mat-raised-button>Enregistrer</button>
+        <button style="background-color: #b6f1abcc;" type="submit" mat-raised-button >Enregistrer</button>
         &nbsp; &nbsp; <button style="background-color: rgba(255,166,156,0.8);" mat-raised-button (click)="returnBack()">Annuler</button>
 
     </form>

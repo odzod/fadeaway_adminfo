@@ -18,6 +18,10 @@ export class ConfigService {
 
     }
 
+    httpPOST(url,params){
+        return this._http.post(this.urlString+url,params);
+    }
+
 
 
 }
