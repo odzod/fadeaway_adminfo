@@ -1,5 +1,6 @@
 <div style="width:1000px;">
     <div class="example-container mat-elevation-z8">
+        <br/><img src="./assets/images/logo_fadeaway_01.png" style="width:260px;"/>
         <div class="example-loading-shade"
              *ngIf="isLoadingResults || isRateLimitReached">
             <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
@@ -7,7 +8,8 @@
                 Problème de chargement... Patientez une minutes
             </div>
         </div>
-
+        &nbsp; <button style="min-height:35px;background-color: rgba(241,148,58,0.8);" mat-raised-button (click)="addNewsAndRedirect()">Ajouter une news</button>
+        <br/>
         <mat-table #table [dataSource]="dataSource" class="example-table"
                    matSort matSortActive="news_id" matSortDisableClear matSortDirection="desc">
             <!--- Note that these columns can be defined in any order.

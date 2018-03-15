@@ -8,6 +8,9 @@ import {catchError} from 'rxjs/operators/catchError';
 import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {switchMap} from 'rxjs/operators/switchMap';
+import {ConfigService} from '../config';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 /**
  * @title Table retrieving data through HTTP
@@ -15,10 +18,11 @@ import {switchMap} from 'rxjs/operators/switchMap';
 @Component({
     selector: 'infos-list',
     styleUrls: ['infos_list.component.css'],
+    providers: [ConfigService],
     templateUrl: 'infos_list.component.html',
 })
 export class InfosListComponent implements OnInit {
-    displayedColumns = ['news_id', 'news_difuse', 'news_type', 'news_title', 'news_create', 'news_update',  'news_user', 'news_edit'];
+    displayedColumns = ['news_id', 'news_difuse', 'news_type', 'news_title', 'news_create', 'news_update', 'news_user', 'news_edit'];
     exampleDatabase: ExampleHttpDao | null;
     dataSource = new MatTableDataSource();
 
@@ -30,7 +34,15 @@ export class InfosListComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     private myEditor;
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private config: ConfigService, private route: ActivatedRoute, private router: Router) {
+    }
+
+    public addNewsAndRedirect() {
+        this.config.httpGET('admin/news/add', '').subscribe(res => {
+            this.router.navigateByUrl('/edit/' + res['id']);
+        });
+    }
+
 
     ngOnInit() {
         this.exampleDatabase = new ExampleHttpDao(this.http);
@@ -73,7 +85,8 @@ export interface ResultFormat {
 
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleHttpDao {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
     getRepoData(sort: string, order: string, page: number): Observable<ResultFormat> {
         const href = 'http://api.fadeaway.fr/index.php/admin/news/list';

@@ -1,8 +1,9 @@
+<img src="./assets/images/logo_fadeaway_01.png" style="width:260px;"/>
+<br/>
 <div style="background-color:white; width:700px; padding:20px;">
     <form class="example-form" id="formEditNews">
-
         <mat-form-field>
-            <input matInput [matDatepicker]="picker1" placeholder="Date de creation">
+            <input matInput [formControl]="date_create" [matDatepicker]="picker1" placeholder="Date de creation">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
@@ -18,7 +19,7 @@
         <br/><br/>
 
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Titre" value="">
+            <input matInput placeholder="Titre" [formControl]="news_title" value="">
         </mat-form-field>
 
         <span style='font-family: Roboto,"Helvetica Neue",sans-serif;
@@ -38,7 +39,7 @@
         </mat-form-field>
 
         <button style="background-color: #b6f1abcc;" mat-raised-button>Enregistrer</button>
-        &nbsp; &nbsp; <button style="background-color: rgba(255,166,156,0.8);" mat-raised-button>Annuler</button>
+        &nbsp; &nbsp; <button style="background-color: rgba(255,166,156,0.8);" mat-raised-button (click)="returnBack()">Annuler</button>
 
     </form>
 </div>

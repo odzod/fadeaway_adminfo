@@ -12,15 +12,30 @@ import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {switchMap} from 'rxjs/operators/switchMap';
 import Jodit from 'jodit';
-
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+// import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 /**
  * @title Table retrieving data through HTTP
  */
+export const MY_FORMATS = {
+    parse: {
+        dateInput: 'LL',
+    },
+    display: {
+        dateInput: 'LL',
+        monthYearLabel: 'MMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY',
+    },
+};
+
 @Component({
     selector: 'infos-edit',
     styleUrls: ['infos_edit.component.css'],
-    providers: [ConfigService],
+    providers: [ConfigService,
+        {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}],
     templateUrl: 'infos_edit.component.html',
 })
 export class InfosEditComponent implements OnInit {
@@ -33,11 +48,18 @@ export class InfosEditComponent implements OnInit {
 
     }
 
+    public returnBack() {
+        this.router.navigateByUrl('');
+    }
+
     ngOnInit() {
 
         this.route.params.subscribe(res => {
             this.config.httpGET('news/' + res.id, '').subscribe(res2 => {
                 this.myForm = res2['data'][0];
+                console.log(this.myForm['news_create']);
+                this.date_create = new FormControl(this.myForm['news_create']);
+                this.news_title = new FormControl(this.myForm['news_title']);
                 this.myEditor.setEditorValue(
                     this.myForm['news_contains']
                 );
@@ -46,6 +68,7 @@ export class InfosEditComponent implements OnInit {
                 );
             });
         });
+
 
         this.myEditor = new Jodit('#editor', {
             "uploader": {
@@ -79,6 +102,9 @@ export class InfosEditComponent implements OnInit {
 
 
     }
+
+    public date_create: FormControl;
+    public news_title: FormControl;
 
     public myForm = {};
 }
