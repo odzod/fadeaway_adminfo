@@ -71,6 +71,7 @@ export class InfosEditComponent implements OnInit {
         this.formData.append("news_contains",this.myEditor.value);
         this.config.httpPOST("admin/news/update", this.formData).subscribe(res=>{
             console.log(res);
+            this.router.navigateByUrl('');
         });
     }
 
