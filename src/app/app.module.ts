@@ -55,6 +55,8 @@ import {EntryApp, MenuComponent} from './menu/menu.component';
 import {InfosListComponent} from './infos_list/infos_list.component';
 import {InfosEditComponent} from './infos_edit/infos_edit.component';
 import {AppRoutingModule} from './routes';
+import { LoadingOverlayComponent } from './loading-overlay/loading-overlay.component';
+
 /**
  * NgModule that includes all Material modules that are required to serve the app.
  */
@@ -124,7 +126,8 @@ export class MaterialModule {
     declarations: [AppComponent
         , EntryApp, MenuComponent,
         InfosListComponent,
-        InfosEditComponent
+        InfosEditComponent,
+        LoadingOverlayComponent
     ],
     bootstrap: [AppComponent],
     providers: [

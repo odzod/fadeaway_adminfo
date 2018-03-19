@@ -26,6 +26,8 @@ export class InfosListComponent implements OnInit {
     exampleDatabase: ExampleHttpDao | null;
     dataSource = new MatTableDataSource();
 
+    loading = false;
+
     resultsLength = 0;
     isLoadingResults = true;
     isRateLimitReached = false;
@@ -38,7 +40,9 @@ export class InfosListComponent implements OnInit {
     }
 
     public addNewsAndRedirect() {
+        this.loading = true;
         this.config.httpGET('admin/news/add', '').subscribe(res => {
+            this.loading = false;
             this.router.navigateByUrl('/edit/' + res['id']);
         });
     }

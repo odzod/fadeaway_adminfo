@@ -49,6 +49,8 @@ export class InfosEditComponent implements OnInit {
 
     }
 
+    loading = false;
+
     public returnBack() {
         this.router.navigateByUrl('');
     }
@@ -64,19 +66,21 @@ export class InfosEditComponent implements OnInit {
     }
 
     onSubmit(form: any): void {
+        this.loading = true;
         this.formData.append('news_title', form.news_title);
-        this.formData.append("news_id",this.news_id);
-        this.formData.append("news_difuse",form.publish);
-        this.formData.append("news_title_contains",this.myEditor2.value);
-        this.formData.append("news_contains",this.myEditor.value);
-        this.config.httpPOST("admin/news/update", this.formData).subscribe(res=>{
+        this.formData.append("news_id", this.news_id);
+        this.formData.append("news_difuse", form.publish);
+        this.formData.append("news_title_contains", this.myEditor2.value);
+        this.formData.append("news_contains", this.myEditor.value);
+        this.config.httpPOST("admin/news/update", this.formData).subscribe(res => {
             console.log(res);
+            this.loading=false;
             this.router.navigateByUrl('');
         });
     }
 
     ngOnInit() {
-
+        this.loading = true;
         this.route.params.subscribe(res => {
             this.config.httpGET('news/' + res.id, '').subscribe(res2 => {
                 this.myForm = res2['data'][0];
@@ -85,6 +89,7 @@ export class InfosEditComponent implements OnInit {
                 this.publish = (this.myForm['news_difuse'] == "1" || this.myForm['news_difuse'] == 1) ? true : false;
                 this.news_id = this.myForm['news_id'];
                 this.news_title = this.myForm['news_title'];
+                this.loading = false;
                 this.myEditor.setEditorValue(
                     this.myForm['news_contains']
                 );
