@@ -68,13 +68,14 @@ export class InfosEditComponent implements OnInit {
     onSubmit(form: any): void {
         this.loading = true;
         this.formData.append('news_title', form.news_title);
+        this.formData.append('news_type', form.news_type);
         this.formData.append("news_id", this.news_id);
         this.formData.append("news_difuse", form.publish);
         this.formData.append("news_title_contains", this.myEditor2.value);
         this.formData.append("news_contains", this.myEditor.value);
         this.config.httpPOST("admin/news/update", this.formData).subscribe(res => {
             console.log(res);
-            this.loading=false;
+            this.loading = false;
             this.router.navigateByUrl('');
         });
     }
@@ -86,6 +87,7 @@ export class InfosEditComponent implements OnInit {
                 this.myForm = res2['data'][0];
                 this.date_create = this.myForm['news_create'];
                 this.date_modif = this.myForm['news_update'];
+                this.news_type = this.myForm['news_type_val'];
                 this.publish = (this.myForm['news_difuse'] == "1" || this.myForm['news_difuse'] == 1) ? true : false;
                 this.news_id = this.myForm['news_id'];
                 this.news_title = this.myForm['news_title'];
@@ -136,8 +138,17 @@ export class InfosEditComponent implements OnInit {
     public date_create: string;
     public date_modif;
     public news_title;
+    public news_type;
     public news_id;
     public publish: boolean;
+
+    public types = [
+        {value: 1, display: 'INFOS'}
+        , {value: 2, display: 'DOSSIERS'}
+        , {value: 3, display: 'CLUTCH'}
+        , {value: 4, display: 'VIDEOS'}
+        , {value: 5, display: 'TEMPS MORT'}
+    ];
 
     public myForm = {};
 }

@@ -15,6 +15,14 @@
             font-size: 11px;font-weight: 400;line-height: 1.125;'>Diffusée l'information</span></mat-checkbox>
         <br/><br/>
 
+        <mat-form-field>
+            <mat-select id="news_type" name="news_type" [(ngModel)]="news_type" placeholder="Type de l'info">
+                <mat-option *ngFor="let type of types" [value]="type.value">
+                    {{ type.display }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-form-field class="example-full-width">
             <input matInput placeholder="Titre"  id="news_title" name="news_title" [(ngModel)]="news_title" value="">
         </mat-form-field>
@@ -41,4 +49,4 @@
     </form>
 </div>
 
-<loading-overlay *ngIf="loading || reloading"></loading-overlay>
+<loading-overlay *ngIf="loading"></loading-overlay>
